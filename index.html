@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="./style.css">
@@ -13,8 +14,8 @@ body {
 }
 
 #app-cover {
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 120px;
   right: 0;
   left: 0;
   width: 430px;
@@ -55,19 +56,16 @@ body {
 }
 
 #player-track {
-  position: absolute;
+  position: inherit;
+  width: 190px;
   top: 0;
   right: 15px;
   left: 15px;
-  padding: 13px 22px 10px 184px;
+  padding: 13px 22px 10px 185px;
   background-color: #fff7f7;
   border-radius: 15px 15px 0 0;
   transition: 0.3s ease top;
   z-index: 1;
-}
-
-#player-track.active {
-  top: -92px;
 }
 
 #album-name {
@@ -79,7 +77,8 @@ body {
 #track-name {
   color: #acaebd;
   font-size: 13px;
-  margin: 2px 0 13px 0;
+  font-style: italic;
+  margin: 2px 0 11px 0;
 }
 
 #track-time {
@@ -171,10 +170,10 @@ body {
 
 #album-art {
   position: absolute;
-  top: -27px;
-  width: 115px;
-  height: 115px;
-  margin-left: 45px;
+  top: -55px;
+  width: 120px;
+  height: 120px;
+  margin-left: 49px;
   transform: rotateZ(0);
   transition: 0.3s ease all;
   box-shadow: 0 0 0 10px #fff;
@@ -183,9 +182,9 @@ body {
 }
 
 #album-art.active {
-  top: -60px;
+  top: -55px;
   box-shadow: 0 0 0 4px #fff7f7, 0 30px 50px -15px #afb7c1;
-  transform: scale(1.2);
+  transform: scale(1.25);
 }
 
 #album-art:before {
@@ -314,6 +313,7 @@ body {
 .button:hover i {
   color: #fff;
 }
+
 </style>
 </head>
 <body>
@@ -416,8 +416,8 @@ $(function () {
     albumArtworks = ["_1", "_2", "_3", "_4", "_5", "_6"],
     trackUrl = [
       "https://github.com/gats-b/gats-b.github.io/blob/main/my%20youth.mp3?raw=true",
-      "https://github.com/gats-b/gats-b.github.io/blob/main/magic%20carpet%20ride.mp3?raw=true",
-      "https://github.com/gats-b/gats-b.github.io/blob/main/Runaway.mp3?raw=true",
+      "https://github.com/gats-b/gats-b.github.io/blob/main/Y2Mate.is%20-%20NCT%20127%20'Magic%20Carpet%20Ride'%20(Official%20Audio)%20%20Sticker%20-%20The%203rd%20Album-XhHtN5J74q4-160k-1649795401233.mp3?raw=true",
+      "https://github.com/gats-b/gats-b.github.io/blob/main/Y2Mate.is%20-%20Runaway-N4Cuqcpc6qU-160k-1647210921601.mp3?raw=true",
       "https://github.com/gats-b/gats-b.github.io/blob/main/like%20water.mp3?raw=true",
       "https://github.com/gats-b/gats-b.github.io/blob/main/uhgood.mp3?raw=true",
       "https://github.com/gats-b/gats-b.github.io/blob/main/eighteen.mp3?raw=true"
@@ -429,13 +429,11 @@ $(function () {
   function playPause() {
     setTimeout(function () {
       if (audio.paused) {
-        playerTrack.addClass("active");
         albumArt.addClass("active");
         checkBuffering();
         i.attr("class", "fas fa-pause");
         audio.play();
       } else {
-        playerTrack.removeClass("active");
         albumArt.removeClass("active");
         clearInterval(buffInterval);
         albumArt.removeClass("buffering");
@@ -619,6 +617,7 @@ $(function () {
 
   initPlayer();
 });
+
 </script>
 </body>
 </html>
